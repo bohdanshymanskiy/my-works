@@ -1,0 +1,233 @@
+.boldText {
+	line-height: 100%;
+	font-weight: bold;
+	color: $fontColor;
+}
+
+$text-props: (
+	weight: bold,
+);
+
+@mixin styleButton {
+	background-color: $buttonColor;
+	border: none;
+	border-radius: 5px;
+	color: #fff;
+	padding: 10px 30px;
+	font-size: 20px;
+	font-weight: map-get($text-props, weight);
+	font-family: "Source Sans Pro", sans-serif;
+}
+
+@mixin styleLink($size, $color) {
+	color: $color;
+	font-size: $size;
+}
+
+body {
+	background-color: $backgroundColor;
+}
+.header {
+	background: $backgroundImage;
+	border-bottom-right-radius: 40%;
+	width: 100%;
+	height: 500px;
+	font-family: $font;
+}
+.header-wrap {
+	max-width: 550px;
+	margin: 0px 0px 0px 130px;
+	color: $fontColor;
+	.landing-logo {
+		display: flex;
+		padding-top: 10px;
+		p {
+			margin: 0px 0px 0px 10px;
+			color: $fontColor;
+			font-weight: 700;
+			font-family: $font;
+			text-align: center;
+			span {
+				display: block;
+				font-weight: 200;
+				font-size: 8px;
+			}
+		}
+	}
+	.header_heading {
+		position: relative;
+		z-index: 1;
+		margin: 30px 0px 0px 0px;
+		font-size: 50px;
+		@extend .boldText;
+	}
+	.header_text {
+		padding-top: 10px;
+	}
+	.header_button {
+		margin-top: 10px;
+		@include styleButton();
+	}
+	.login {
+		@include styleLink(15px, #fff);
+		margin: 0px 0px 0px 130px;
+	}
+}
+
+.header_heading::before {
+	content: "";
+	position: absolute;
+	bottom: 6px;
+	left: 0;
+	width: 210px;
+	height: 35px;
+	background-color: $wordsBgColor;
+	z-index: -1;
+}
+
+.section {
+	width: 100%;
+	.section_text {
+		position: relative;
+		margin: 20px auto;
+		width: 400px;
+		padding: 10px 0px 0px 0px;
+		font-family: $font;
+		color: $fontColor;
+		@extend .boldText;
+		font-size: 30px;
+	}
+	&_card_wrap {
+		width: 900px;
+		margin: 0 auto;
+		padding: 20px 0px 0px 0px;
+	}
+}
+
+.section_card {
+	display: flex;
+	background-color: $flexBgColor;
+	border-radius: 5px;
+	margin: 20px 0px 0px 0px;
+	padding: 20px;
+	img {
+		flex: 0 1 350px;
+		border-radius: 5px;
+	}
+	.section_card_right_container {
+		flex: 1 1 500px;
+		padding: 0 50px;
+		margin: 0 auto;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		.section_card_heading {
+			color: #fff;
+			font-family: $font;
+			font-size: 25px;
+		}
+		.section_card_text {
+			color: $flexColor;
+			margin-top: 10px;
+			font-family: $font;
+		}
+		.section_link {
+			color: $flexColor;
+			margin-top: 20px;
+			font-family: $font;
+		}
+	}
+}
+.section_banner {
+	max-width: 1000px;
+	margin: 150px auto;
+	background-image: $gradient;
+	height: 150px;
+	.section_banner_text_wrap {
+		display: flex;
+		flex-direction: column;
+		max-width: 800px;
+		padding: 10px 0px 0px 50px;
+		.section_banner_heading {
+			position: relative;
+			z-index: 1;
+			color: $fontColor;
+			@extend .boldText;
+			font-family: $font;
+			font-size: 20px;
+		}
+		.section_banner_text {
+			color: $flexColor;
+		}
+	}
+	.section_banner_button {
+		@include styleButton();
+		float: right;
+		margin-right: 150px;
+		margin-top: -60px;
+	}
+}
+
+.section_banner_heading::after {
+	content: "";
+	position: absolute;
+	top: -5px;
+	left: 80px;
+	width: 45px;
+	height: 25px;
+	background-color: $wordsBgColor;
+	z-index: -1;
+}
+
+.section_text::before {
+	content: "";
+	position: absolute;
+	top: 5px;
+	right: 85px;
+	width: 150px;
+	height: 40px;
+	background-color: $wordsBgColor;
+	z-index: -1;
+}
+
+.footer {
+	position: absolute;
+	background-color: $flexBgColor;
+	width: 100%;
+	height: 240px;
+	z-index: -100;
+	margin-top: -225px;
+	.footer-wrap {
+		max-width: 1500px;
+		margin: 130px auto 90px;
+		display: flex;
+		justify-content: space-around;
+		align-items: center;
+		.landing-logo {
+			display: flex;
+			p {
+				text-align: center;
+				margin: 0px 0px 0px 20px;
+				color: $flexColor;
+				font-weight: 700;
+				font-family: $font;
+				span {
+					display: block;
+					font-size: 8px;
+					font-weight: 200;
+				}
+			}
+		}
+		.footer_text {
+			max-width: 300px;
+			color: $flexColor;
+			font-size: 13px;
+			font-family: $font;
+		}
+		.footer-cr {
+			color: $flexColor;
+			font-size: 13px;
+			font-family: $font;
+		}
+	}
+}

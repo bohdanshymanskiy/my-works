@@ -1,0 +1,240 @@
+.container {
+	min-width: 900px;
+	font-family: "Open Sans";
+}
+
+.header {
+	background: url("../img/apples.jpg") center / cover no-repeat;
+	height: 600px;
+	color: #fff;
+}
+
+.header_nav {
+	display: flex;
+	justify-content: space-between;
+}
+.header_nav p {
+	margin: 20px 0px 0px 20px;
+}
+nav a {
+	display: inline-block;
+	padding: 20px 50px 0px 20px;
+	text-decoration: none;
+	color: #fff;
+}
+
+.title {
+	letter-spacing: 3px;
+	text-transform: uppercase;
+}
+.header_logo {
+	margin: 170px 0px 0px 0px;
+	text-align: center;
+}
+.header_logo .title {
+	font-size: 50px;
+}
+.title span {
+	font-size: 80px;
+}
+.subtitle {
+	position: relative;
+	left: 0px;
+	bottom: 50px;
+}
+.header_link {
+	text-align: center;
+	margin: 90px 0px 0px 0px;
+}
+.header_link a {
+	padding: 8px 70px;
+	border: 2px solid #fff;
+	background-color: #404347;
+	color: #fff;
+	text-decoration: none;
+}
+
+.info_text {
+	height: 300px;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+.info_left_text {
+	margin: 0px 0px 0px 30px;
+	max-width: 350px;
+	position: relative;
+	bottom: 25px;
+}
+.info_left_text span {
+	font-weight: 700;
+}
+
+.info_right_text {
+	margin: 0px 0px 0px 120px;
+	font-size: 14px;
+	max-width: 700px;
+}
+
+.section {
+	background-color: #f3f3f3;
+	padding: 0px 0px 30px 0px;
+}
+.bolt_text {
+	font-weight: 700;
+}
+.heading {
+	text-align: center;
+	padding: 80px 0px 40px 0px;
+
+	font-size: 20px;
+}
+.section_item {
+	height: 350px;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+.section_item:nth-child(odd) {
+	flex-direction: row-reverse;
+}
+
+.section_item-img {
+	flex: 0 0 800px;
+	height: 300px;
+	position: relative;
+	margin: 0px 40px 0px 0px;
+}
+
+.section-text {
+	text-align: center;
+}
+
+.section_left .section_item-img {
+	background-image: url(../img/sample.jpg);
+}
+
+.section_right .section_item-img {
+	background-image: url(../img/sample1.jpg);
+}
+
+.section_date {
+	position: absolute;
+	color: #fff;
+	bottom: 0px;
+	left: 20px;
+}
+.section_heart {
+	position: absolute;
+	background-color: #676465;
+	padding: 5px 15px;
+	border: 2px solid #fff;
+	color: #fff;
+	top: 10px;
+	right: 20px;
+}
+
+.subscribe {
+	padding: 30px 70px;
+	max-width: 1100px;
+	margin: 30px auto;
+	background-color: #fff;
+}
+.subscribe label {
+	font-size: 25px;
+}
+.email {
+	width: 500px;
+	height: 50px;
+	border: 2px solid #333;
+	background-color: #f3f3f3;
+	font-size: 18px;
+}
+.email::placeholder {
+	color: #333;
+	font-weight: 700;
+	padding: 0px 0px 0px 20px;
+}
+button {
+	color: #fff;
+	background-color: #333;
+	width: 100px;
+}
+.button {
+	height: 55px;
+	font-size: 15px;
+	position: relative;
+	top: -1px;
+	left: -4px;
+}
+
+.about {
+	height: 500px;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
+
+.about_column {
+	margin: 0px 0px 0px 20px;
+	max-width: 300px;
+	height: 200px;
+	display: flex;
+	flex-direction: column;
+}
+
+.about_header {
+	font-weight: 700;
+	font-size: 15px;
+}
+.about_text {
+	color: #9ea1a4;
+	margin: 20px 0px 0px 0px;
+}
+.about_time {
+	color: #e9eef5;
+}
+.italic {
+	font-style: italic;
+}
+.about_email {
+	width: 160px;
+	font-size: 12px;
+	height: 20px;
+	border: 2px solid #333;
+}
+.about_email::placeholder {
+	font-weight: 700;
+}
+
+.about_button {
+	height: 27px;
+	width: 80px;
+	position: relative;
+	left: -4px;
+	top: 0px;
+}
+
+.footer {
+	display: flex;
+	justify-content: space-between;
+	border-top: 3px solid #f1f1f1;
+	padding: 15px 0px 0px 0px;
+}
+ul {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+
+ul li {
+	display: inline-block;
+	padding: 0px 0px 0px 40px;
+}
+li a {
+	text-decoration: none;
+	color: #333;
+}
+.footet_text {
+	color: #9e9ea3;
+}

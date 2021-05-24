@@ -1,0 +1,44 @@
+body {
+	max-width: 100%;
+	text-align: center;
+}
+
+.formHead,
+.choose {
+	position: relative;
+	left: 35%;
+	display: flex;
+	justify-content: start;
+}
+select {
+	height: 30px;
+	position: relative;
+	top: 10px;
+}
+
+table {
+	width: 100%;
+	border-collapse: collapse;
+}
+
+table,
+th,
+td {
+	border: 1px solid #333;
+}
+
+th,
+td {
+	text-align: center;
+}
+
+th {
+	padding: 8px 15px;
+	background-color: limegreen;
+	color: #fff;
+}
+
+td {
+	background-color: lightgrey;
+	padding: 20px 10px;
+}

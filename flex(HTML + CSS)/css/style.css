@@ -1,0 +1,205 @@
+body {
+	font-family: "Open Sans", Helvetica, Arial, sans-serif;
+	font-size: 18px;
+}
+* {
+	box-sizing: border-box;
+}
+.wrapper {
+	background-color: lightgrey;
+}
+.container {
+	max-width: 1200px;
+	margin: 0 auto;
+}
+.header-box {
+	display: flex;
+	flex-wrap: wrap;
+}
+.header-item {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	flex: 0 1 50%;
+	height: 400px;
+	padding: 20px;
+}
+.item-img {
+	padding: 0px;
+}
+.logo {
+	align-self: center;
+	font-size: 50px;
+	color: #fff;
+}
+.quote {
+	padding: 4px;
+	font-size: 25px;
+	font-style: italic;
+	letter-spacing: 2px;
+}
+.white {
+	background-color: #fff;
+}
+
+.header-title {
+	font-size: 35px;
+	color: #76cdd8;
+}
+.header-hover:hover {
+	box-shadow: 0px 0px 4px lightseagreen;
+}
+.header-text {
+	line-height: 35px;
+}
+.item-game {
+	color: #fff;
+}
+.btn {
+	width: 150px;
+	height: 50px;
+	background-color: lightseagreen;
+	color: #fff;
+	font-size: 20px;
+	border: none;
+}
+.btn:hover {
+	background-color: rgb(118, 205, 216);
+}
+.learninfo-btn {
+	align-self: flex-end;
+	margin: 0px 20px 0px 0px;
+}
+.game-logo {
+	width: 300px;
+	height: 300px;
+	border-radius: 50%;
+}
+.paypass {
+	width: 100%;
+	height: 100%;
+}
+.lightskyblue {
+	background-color: lightskyblue;
+}
+section {
+	padding: 30px 0px 0px 0px;
+}
+.section-box {
+	display: flex;
+	justify-content: space-between;
+	height: 500px;
+}
+
+.section-info {
+	background-color: #fff;
+	padding: 20px;
+	flex: 1 1 auto;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+.section-img {
+	flex: 0 1 400px;
+}
+.section-img img {
+	height: 100%;
+}
+
+.plan {
+	padding: 30px 0px 0px 0px;
+}
+.plan-box {
+	background-color: #fff;
+	display: flex;
+	justify-content: space-between;
+	height: 550px;
+}
+.plan-img {
+	flex: 0 1 350px;
+}
+
+.plan-img img {
+	height: 100%;
+}
+.plan-column {
+	flex: 0 1 350px;
+	height: 480px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	align-self: center;
+	border: 2px solid lightseagreen;
+}
+
+.plan-title {
+	width: 100%;
+	text-align: center;
+	background-color: lightseagreen;
+	color: #fff;
+}
+.background {
+	background-color: lightskyblue;
+	height: 150px;
+	max-width: 1200px;
+	margin: 0 auto;
+}
+
+.form {
+	max-width: 700px;
+	margin: 0 auto;
+	height: 400px;
+	background-color: #fff;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	position: relative;
+	top: -100px;
+	z-index: 5;
+}
+.form-info {
+	display: flex;
+	justify-content: space-around;
+}
+.left-form {
+	display: flex;
+	flex-direction: column;
+}
+.form-button {
+	align-self: center;
+	margin: 10px;
+}
+input,
+select {
+	width: 250px;
+	height: 30px;
+	margin: 10px 0px;
+}
+
+textarea {
+	width: 250px;
+	height: 150px;
+}
+
+.form-title {
+	color: #fff;
+	background-color: lightskyblue;
+}
+.down {
+	height: 300px;
+	background-color: lightseagreen;
+	position: relative;
+	top: -150px;
+}
+.down-box {
+	padding: 45px 0px 0px 0px;
+	display: flex;
+	justify-content: space-around;
+	color: #fff;
+}
+
+footer {
+	height: 50px;
+	text-align: center;
+}
