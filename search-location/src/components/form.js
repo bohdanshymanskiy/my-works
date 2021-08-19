@@ -1,11 +1,11 @@
 import React from 'react';
 
 function Form({ onCreate }) {
-  let name = React.createRef()
+  let name = React.createRef();
   function handleSubmitClick(event) {
     name = name.current.value;
     event.preventDefault();
-    onCreate(name)
+    onCreate(name);
   }
   return (
     <form onSubmit={handleSubmitClick}>

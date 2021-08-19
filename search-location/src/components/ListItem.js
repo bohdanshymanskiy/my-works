@@ -1,6 +1,7 @@
 import React from 'react';
-let clases = {};
+
 function ListItem({ todo }) {
+  let clases = {};
   if (typeof (todo[1]) === 'string') {
     clases.strong = 'string-icon';
     clases.p = 'string-text';
@@ -16,7 +17,7 @@ function ListItem({ todo }) {
   return (
     <li>
       <strong className={clases.strong} />
-      <span className='list-options'>{todo[0]}:</span>
+      <span>{todo[0]}:</span>
       <p className={clases.p}>{todo[1].toString()}</p>
     </li>
   )

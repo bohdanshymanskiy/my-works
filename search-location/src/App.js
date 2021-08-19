@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import Header from './components/header';
-import Form from './components/form';
+import Header from './components/Header';
+import Form from './components/Form';
 import List from './components/List';
 import Loader from './components/Loader';
 
@@ -10,7 +10,7 @@ function App() {
 
   function addLocation(title) {
     setLocation({});
-    setLoading(true)
+    setLoading(true);
     fetch(`https://ipapi.co/${title}/json/`)
       .then(response => response.json())
       .then(location => {
@@ -20,7 +20,6 @@ function App() {
         }, 2000)
       });
   }
-  if (location.status) { }
 
   return (
     <div className='wrapper'>
