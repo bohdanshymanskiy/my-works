@@ -9,7 +9,7 @@ function ProductItem({ productItem }) {
     </div>
     <h3>{productItem.title}</h3>
     <div className='products-coast'>
-      <div className='products-price'>{Math.floor(Math.random() * 150)} USD</div>
+      <div className='products-price'>{productItem.id} USD</div>
       <button className='delete-item' onClick={() => removeProduct(productItem.id)}>&times;</button>
     </div>
   </div>
