@@ -1,8 +1,18 @@
 let array = [1, 1, 6, 5, 73]
 function Average(arr) {
-  let sortArray = arr.filter((el, i) => i % 2 === 0 && el % 2 === 1)
-  return sortArray.reduce((acc, curr) => acc + curr) / sortArray.length
+  let count = 0
+  let sum = arr.reduce((acc, curr, index, array) => {
+    if (index % 2 === 0 && curr % 2 === 1 && index < array.length) {
+      acc += curr
+      count++
+    }
+    return acc
+  }, 0)
+  return sum / count
 }
+
+
+
 
 function getAverage(arr) {
   let sum = 0;
@@ -21,16 +31,28 @@ let check = [
 ]
 
 function getSum(arr) {
-  return arr.reduce((acc, currentValue) => acc + currentValue.price, 0)
+  return arr.reduce((acc, { amount, price } = currentValue) => acc + amount * price, 0)
 }
 
+
+
+
 function formattedArray(arr) {
-  return arr.map(item => Object.values(item))
+  return arr.map(item => [item].reduce((acc, curr) => {
+    acc.name = curr[0]
+    acc.amount = curr[1]
+    acc.price = curr[2]
+    return acc
+  }, {}))
 }
+
+
+
+
 
 let ob = { a: 'asd', asd: [1, 2, 3], bret: 'qwe', bta: 123 }
 
 function filterObject(obj) {
-  return Object.fromEntries(Object.entries(obj).filter(item => item[0].includes('a') || item[1].includes('a')))
+  return Object.fromEntries(Object.entries(obj).filter(item => item[0].includes('a')))
 }
 

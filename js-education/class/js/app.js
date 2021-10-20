@@ -2,34 +2,36 @@ class CustomArray {
   constructor(...options) {
     this.arr = options
   }
-  push(item) {
-    this.arr[this.arr.length] = item;
+  push(...item) {
+    var length = this.arr.length
+    for (let i = 0; i < item.length; i++) {
+      this.arr[length + i] = item[i];
+    }
     return this
   }
   pop() {
-    this.arr = this.arr.slice(0, this.arr.length - 1)
-    return this
+    return this.arr[this.arr.length - 1]
   }
-  forEach(callback) {
+  forEach(callback, arr) {
     var array = this.arr
     for (var i = 0; i < array.length; i++) {
-      callback(array[i])
+      callback.call(arr, array[i], i, array)
     }
   }
   map(callback) {
     let length = this.arr.length;
     let array = [];
     for (let i = 0; i < length; i++) {
-      array.push(callback(this.arr[i]))
+      array.push(callback(this.arr[i], i, this.arr))
     }
     this.arr = array;
     return this
   }
-  filter(callback) {
+  filter(context, callback) {
     let length = this.arr.length;
     let array = [];
     for (let i = 0; i < length; i++) {
-      if (callback(this.arr[i])) {
+      if (callback(context, this.arr[i], i, this.arr)) {
         array.push(this.arr[i])
       }
     }
@@ -39,7 +41,7 @@ class CustomArray {
   find(callback) {
     let length = this.arr.length;
     for (let i = 0; i < length; i++) {
-      if (callback(this.arr[i])) {
+      if (callback.call(this.arr[i], i, this.arr)) {
         return this.arr[i]
       }
     }
@@ -53,7 +55,7 @@ class CustomArray {
     }
     return false
   }
-  everyt(callback) {
+  every(callback) {
     let length = this.arr.length;
     for (let i = 0; i < length; i++) {
       if (!callback(this.arr[i])) {
@@ -65,3 +67,5 @@ class CustomArray {
 }
 
 const array = new CustomArray(11, 12, '30', 4)
+console.log(array.forEach(item => console.log(item)));
+
