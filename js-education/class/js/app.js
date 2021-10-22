@@ -67,5 +67,5 @@ class CustomArray {
 }
 
 const array = new CustomArray(11, 12, '30', 4)
-console.log(array.forEach(item => console.log(item)));
+console.log(array.map(item => item * 10));
 
