@@ -1,38 +1,36 @@
-var container = document.getElementById('container')
-var form = document.getElementById('form');
-var submit = document.getElementById('submit')
-var table = document.createElement('table')
-let dateOfEdit = document.getElementById('dateOfEdit')
-let deleteItem = document.getElementById('delete')
+let container = document.getElementById('container')
+let submit = document.getElementById('submit')
+let table = document.createElement('table')
+let inputName = document.getElementById('username');
+let select = document.getElementById('workplace');
 
-submit.addEventListener('click', addEntry)
+function setData(data = []) {
+  localStorage.setItem('allUsers', JSON.stringify(data))
+}
+function getData() {
+  return JSON.parse(localStorage.getItem('allUsers'))
+}
 function addEntry() {
-  var dataOfUsers = JSON.parse(localStorage.getItem('allUsers'));
-  if (dataOfUsers == null) dataOfUsers = [];
-  var inputName = document.getElementById('username').value;
-  var select = document.getElementById('workplace').value;
-  if (inputName === '' || select === 'Work Department') {
+  let dataOfUsers = getData();
+  if (inputName.value === '' || select.value === 'Work Department') {
     alert('Please fill all forms')
   } else {
-    var user = {
-      'userName': inputName,
-      'department': select,
+    let user = {
+      'userName': inputName.value,
+      'department': select.value,
       'dateOfCreate': new Date().toUTCString(),
       'editDate': '-'
     };
-
-    localStorage.setItem('user', JSON.stringify(user));
     dataOfUsers.push(user);
-    localStorage.setItem('allUsers', JSON.stringify(dataOfUsers));
+    setData(dataOfUsers)
+    setTable()
   }
 };
 
-submit.addEventListener('click', setTable)
-
 function setTable() {
-  var data = JSON.parse(localStorage.getItem('allUsers'))
+  let users = getData()
 
-  if (data.length == 0) {
+  if (users.length == 0) {
     table.style.display = 'none'
   } else {
     table.innerHTML = `<tr>
@@ -44,13 +42,14 @@ function setTable() {
     <th>Delete</th>
     </tr>`
 
-    for (let i of data) {
+    for (let i = 0; i < users.length; i++) {
       let addRow = document.createElement('tr');
+      addRow.id = i;
       addRow.innerHTML = `
-      <td id = 'rowName'>${i.userName}</td>
-    <td id = 'rowDepartment'>${i.department}</td>
-    <td>${i.dateOfCreate}</td>
-    <td id='dateOfEdit'>${i.editDate}</td>
+      <td id = 'rowName'>${users[i].userName}</td>
+    <td id = 'rowDepartment'>${users[i].department}</td>
+    <td>${users[i].dateOfCreate}</td>
+    <td id='dateOfEdit'>${users[i].editDate}</td>
     <td><button type='button' id='edit'>EDIT</button></td>
     <td><button type='button' id='delete'>Delete</button></td>`
       table.appendChild(addRow);
@@ -58,60 +57,38 @@ function setTable() {
     container.appendChild(table);
     table.style.display = 'inline-block'
   }
-}
 
-
-document.addEventListener('click', function (e) {
-  if (e.target && e.target.id == 'edit') {
-    var el = e.target.parentNode.parentNode
-    let arrayOfTags = document.querySelectorAll('tr')
-    let index = 0;
-    for (let i = 0; i < arrayOfTags.length; i++) {
-      if (arrayOfTags[i] === el) {
-        index = i
-      }
-    }
-    index -= 1
-
-    let correctData = JSON.parse(localStorage.getItem('allUsers'))
-
-    submit.addEventListener('click', editTable, { once: true })
-    function editTable() {
-      submit.removeEventListener('click', setTable)
-      submit.removeEventListener('click', addEntry)
-      correctData[index].userName = document.getElementById('username').value;
-      correctData[index].department = document.getElementById('workplace').value;
-      correctData[index].editDate = new Date().toUTCString();
-      localStorage.setItem('allUsers', JSON.stringify(correctData));
-    }
-    submit.addEventListener('click', () => setTable())
-  }
-  submit.addEventListener('click', addEntry)
-  submit.addEventListener('click', setTable)
-});
-
-document.addEventListener('click', function (e) {
-  if (e.target && e.target.id == 'delete') {
-    let areYouSure = confirm('Are you sure to delete this user info?')
-    if (areYouSure) {
-      var el = e.target.parentNode.parentNode
-      let arrayOfTags = document.querySelectorAll('tr')
-      let index = 0;
-      for (let i = 0; i < arrayOfTags.length; i++) {
-        if (arrayOfTags[i] === el) {
-          index = i
+  let editItem = document.querySelectorAll('#edit')
+  for (let edit of editItem) {
+    edit.onclick = (e) => {
+      let el = e.target.parentNode.parentNode.id
+      submit.addEventListener('click', editTable, { once: true })
+      function editTable() {
+        if (inputName.value === '' || select.value === 'Work Department') {
+          alert('Please fill all forms')
+        } else {
+          submit.removeEventListener('click', addEntry)
+          users[el].userName = inputName.value;
+          users[el].department = select.value;
+          users[el].editDate = new Date().toUTCString();
+          setData(users)
+          setTable()
         }
       }
-      index -= 1
-
-      let correctData = JSON.parse(localStorage.getItem('allUsers'))
-
-      var newData = correctData.filter(item => item !== correctData[index]);
-
-      localStorage.setItem('allUsers', JSON.stringify(newData));
-      setTable()
     }
   }
-})
 
-localStorage.clear()
+  let deleteItem = document.querySelectorAll('#delete')
+  deleteItem.forEach(item => item.onclick = (e) => {
+    let areYouSure = confirm('Are you sure to delete this user info?')
+    if (areYouSure) {
+      let el = e.target.parentNode.parentNode.id
+      users = users.filter(item => item !== users[el])
+      setData(users)
+      setTable()
+    }
+  })
+}
+
+submit.addEventListener('click', addEntry)
+setTable()
