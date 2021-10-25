@@ -1,8 +1,8 @@
-let array = [1, 1, 6, 5, 73]
+let array = [1, 1, 6, 5, 73, 73]
 function Average(arr) {
   let count = 0
-  let sum = arr.reduce((acc, curr, index, array) => {
-    if (index % 2 === 0 && curr % 2 === 1 && index < array.length) {
+  let sum = arr.reduce((acc, curr, index) => {
+    if (index % 2 === 0 && curr % 2 === 1) {
       acc += curr
       count++
     }
@@ -12,12 +12,10 @@ function Average(arr) {
 }
 
 
-
-
 function getAverage(arr) {
   let sum = 0;
   let count = 0;
-  for (let i = 0; i <= arr.length; i++) {
+  for (let i = 0; i < arr.length; i++) {
     if (i % 2 === 0 && arr[i] % 2 === 1) {
       sum += arr[i]
       count++
@@ -38,14 +36,11 @@ function getSum(arr) {
 
 
 function formattedArray(arr) {
-  return arr.map(item => [item].reduce((acc, curr) => {
-    acc.name = curr[0]
-    acc.amount = curr[1]
-    acc.price = curr[2]
-    return acc
-  }, {}))
+  return arr.reduce((acc, [name, amount, price] = currentValue) => {
+    acc.push({ name, amount, price })
+    return acc;
+  }, [])
 }
-
 
 
 

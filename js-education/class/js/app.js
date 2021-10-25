@@ -3,19 +3,21 @@ class CustomArray {
     this.arr = options
   }
   push(...item) {
-    var length = this.arr.length
+    let length = this.arr.length
     for (let i = 0; i < item.length; i++) {
       this.arr[length + i] = item[i];
     }
-    return this
+    return this.arr.length
   }
   pop() {
-    return this.arr[this.arr.length - 1]
+    let item = this.arr[this.arr.length - 1]
+    this.arr.length = this.arr.length - 1;
+    return item;
   }
-  forEach(callback, arr) {
-    var array = this.arr
-    for (var i = 0; i < array.length; i++) {
-      callback.call(arr, array[i], i, array)
+  forEach(callback) {
+    let array = this.arr
+    for (let i = 0; i < array.length; i++) {
+      callback(array[i], i, array)
     }
   }
   map(callback) {
@@ -27,11 +29,11 @@ class CustomArray {
     this.arr = array;
     return this
   }
-  filter(context, callback) {
+  filter(callback, context) {
     let length = this.arr.length;
     let array = [];
     for (let i = 0; i < length; i++) {
-      if (callback(context, this.arr[i], i, this.arr)) {
+      if (callback.call(context, this.arr[i], i, this.arr)) {
         array.push(this.arr[i])
       }
     }
@@ -39,17 +41,20 @@ class CustomArray {
     return this
   }
   find(callback) {
+    let array = this.arr
     let length = this.arr.length;
+    let value;
     for (let i = 0; i < length; i++) {
-      if (callback.call(this.arr[i], i, this.arr)) {
-        return this.arr[i]
+      value = array[i]
+      if (callback(value, i, array)) {
+        return value;
       }
     }
   }
   some(callback) {
     let length = this.arr.length;
     for (let i = 0; i < length; i++) {
-      if (callback(this.arr[i])) {
+      if (callback(this.arr[i], i, this.arr)) {
         return true
       }
     }
@@ -58,14 +63,11 @@ class CustomArray {
   every(callback) {
     let length = this.arr.length;
     for (let i = 0; i < length; i++) {
-      if (!callback(this.arr[i])) {
+      if (!callback(this.arr[i], i, this.arr)) {
         return false
       }
     }
     return true
   }
 }
-
-const array = new CustomArray(11, 12, '30', 4)
-console.log(array.map(item => item * 10));
 
