@@ -14,41 +14,36 @@ function setData(data = []) {
 }
 function getData() {
   try {
-    return JSON.parse(localStorage.getItem('allUsers'))
+    return JSON.parse(localStorage.getItem('allUsers')) || []
   } catch (e) {
     alert(e.message)
   }
 }
 function addEntry() {
-   let dataOfUsers = getData() || [];
-  if(activeItem) {
+   let dataOfUsers = getData();
     if (inputName.value === '' || select.value === 'Work Department') {
     alert('Please fill all forms')
-  } else {
+    } else {
+    if (activeItem || activeItem === 0) {
     dataOfUsers[activeItem].userName = inputName.value;
     dataOfUsers[activeItem].department = select.value;
     dataOfUsers[activeItem].editDate = new Date().toUTCString();
     activeItem = null;
-    }
-  } else {
-  if (inputName.value === '' || select.value === 'Work Department') {
-    alert('Please fill all forms')
-  } else {
-    let user = {
+    } else {
+    const user = {
       'userName': inputName.value,
       'department': select.value,
       'dateOfCreate': new Date().toUTCString(),
       'editDate': '-'
-    };
+      };
     dataOfUsers.push(user);
     }
   }
   setData(dataOfUsers)
   setTable()
-};
-
+  }
 function setTable() {
-  let users = getData() || []
+  let users = getData()
 
   if (users.length == 0) {
     table.style.display = 'none'
@@ -64,12 +59,12 @@ function setTable() {
 
     for (let i = 0; i < users.length; i++) {
       let addRow = document.createElement('tr');
-      addRow.setAttribute('data-id', i)
+      addRow.dataset.id = i
       addRow.innerHTML = `
-      <td id = 'rowName'>${users[i].userName}</td>
-    <td id = 'rowDepartment'>${users[i].department}</td>
+    <td>${users[i].userName}</td>
+    <td>${users[i].department}</td>
     <td>${users[i].dateOfCreate}</td>
-    <td id='dateOfEdit'>${users[i].editDate}</td>
+    <td>${users[i].editDate}</td>
     <td><button type='button' id='edit'>EDIT</button></td>
     <td><button type='button' id='delete'>Delete</button></td>`
       table.appendChild(addRow);
@@ -82,21 +77,23 @@ function setTable() {
   for (let edit of editItem) {
     edit.addEventListener('click', getEditItemId)
     function getEditItemId(e){
-      activeItem = e.target.parentNode.parentNode.dataset.id
+      activeItem = +e.target.parentNode.parentNode.dataset.id
       inputName.value = users[activeItem].userName
       select.value = users[activeItem].department
       }
   }
   let deleteItem = document.querySelectorAll('#delete')
-  deleteItem.forEach(item => item.onclick = (e) => {
+  deleteItem.forEach(item => {
+    item.addEventListener('click', (e) => {
     let areYouSure = confirm('Are you sure to delete this user info?')
     if (areYouSure) {
-      let el = e.target.parentNode.parentNode.dataset.id
-      users = users.filter(item => item !== users[el])
+      let el = +e.target.parentNode.parentNode.dataset.id
+      users.splice(el, 1)
       setData(users)
       setTable()
     }
   })
+ })
 }
 submit.addEventListener('click', addEntry)
 setTable()
