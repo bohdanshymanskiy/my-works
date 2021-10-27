@@ -3,7 +3,7 @@ const submit = document.getElementById('submit')
 const table = document.createElement('table')
 const inputName = document.getElementById('username');
 const select = document.getElementById('workplace');
-let activeItem;
+let activeItem = null;
 
 function setData(data = []) {
   try {
@@ -24,7 +24,7 @@ function addEntry() {
   if (inputName.value === '' || select.value === 'Work Department') {
     alert('Please fill all forms')
   } else {
-    if (activeItem || activeItem === 0) {
+    if (activeItem !== null) {
       dataOfUsers[activeItem].userName = inputName.value;
       dataOfUsers[activeItem].department = select.value;
       dataOfUsers[activeItem].editDate = new Date().toUTCString();
@@ -74,14 +74,15 @@ function setTable() {
   }
 
   const editItem = document.querySelectorAll('#edit')
-  for (let edit of editItem) {
-    edit.addEventListener('click', getEditItemId)
-    function getEditItemId(e) {
-      activeItem = +e.target.parentNode.parentNode.dataset.id
-      inputName.value = users[activeItem].userName
-      select.value = users[activeItem].department
-    }
+  editItem.forEach(item => {
+    item.addEventListener('click', getEditItemId)
+  })
+  function getEditItemId(e) {
+    activeItem = +e.target.parentNode.parentNode.dataset.id
+    inputName.value = users[activeItem].userName
+    select.value = users[activeItem].department
   }
+
   const deleteItem = document.querySelectorAll('#delete')
   deleteItem.forEach(item => {
     item.addEventListener('click', (e) => {
