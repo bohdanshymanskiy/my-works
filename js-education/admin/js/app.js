@@ -20,28 +20,28 @@ function getData() {
   }
 }
 function addEntry() {
-   let dataOfUsers = getData();
-    if (inputName.value === '' || select.value === 'Work Department') {
+  let dataOfUsers = getData();
+  if (inputName.value === '' || select.value === 'Work Department') {
     alert('Please fill all forms')
-    } else {
+  } else {
     if (activeItem || activeItem === 0) {
-    dataOfUsers[activeItem].userName = inputName.value;
-    dataOfUsers[activeItem].department = select.value;
-    dataOfUsers[activeItem].editDate = new Date().toUTCString();
-    activeItem = null;
+      dataOfUsers[activeItem].userName = inputName.value;
+      dataOfUsers[activeItem].department = select.value;
+      dataOfUsers[activeItem].editDate = new Date().toUTCString();
+      activeItem = null;
     } else {
-    const user = {
-      'userName': inputName.value,
-      'department': select.value,
-      'dateOfCreate': new Date().toUTCString(),
-      'editDate': '-'
+      const user = {
+        'userName': inputName.value,
+        'department': select.value,
+        'dateOfCreate': new Date().toUTCString(),
+        'editDate': '-'
       };
-    dataOfUsers.push(user);
+      dataOfUsers.push(user);
     }
   }
   setData(dataOfUsers)
   setTable()
-  }
+}
 function setTable() {
   let users = getData()
 
@@ -58,7 +58,7 @@ function setTable() {
     </tr>`
 
     for (let i = 0; i < users.length; i++) {
-      let addRow = document.createElement('tr');
+      const addRow = document.createElement('tr');
       addRow.dataset.id = i
       addRow.innerHTML = `
     <td>${users[i].userName}</td>
@@ -73,27 +73,27 @@ function setTable() {
     table.style.display = 'inline-block'
   }
 
-  let editItem = document.querySelectorAll('#edit')
+  const editItem = document.querySelectorAll('#edit')
   for (let edit of editItem) {
     edit.addEventListener('click', getEditItemId)
-    function getEditItemId(e){
+    function getEditItemId(e) {
       activeItem = +e.target.parentNode.parentNode.dataset.id
       inputName.value = users[activeItem].userName
       select.value = users[activeItem].department
-      }
+    }
   }
-  let deleteItem = document.querySelectorAll('#delete')
+  const deleteItem = document.querySelectorAll('#delete')
   deleteItem.forEach(item => {
     item.addEventListener('click', (e) => {
-    let areYouSure = confirm('Are you sure to delete this user info?')
-    if (areYouSure) {
-      let el = +e.target.parentNode.parentNode.dataset.id
-      users.splice(el, 1)
-      setData(users)
-      setTable()
-    }
+      const areYouSure = confirm('Are you sure to delete this user info?')
+      if (areYouSure) {
+        const el = +e.target.parentNode.parentNode.dataset.id
+        users.splice(el, 1)
+        setData(users)
+        setTable()
+      }
+    })
   })
- })
 }
 submit.addEventListener('click', addEntry)
 setTable()
