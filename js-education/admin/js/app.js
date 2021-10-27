@@ -20,7 +20,7 @@ function getData() {
   }
 }
 function addEntry() {
-  let dataOfUsers = getData();
+  const dataOfUsers = getData();
   if (inputName.value === '' || select.value === 'Work Department') {
     alert('Please fill all forms')
   } else {
@@ -43,7 +43,7 @@ function addEntry() {
   setTable()
 }
 function setTable() {
-  let users = getData()
+  const users = getData()
 
   if (users.length == 0) {
     table.style.display = 'none'
