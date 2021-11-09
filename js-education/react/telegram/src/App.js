@@ -1,11 +1,27 @@
 import React from "react";
-import { Header } from "./components/styles/Header";
-import { Container } from "./components/styles/Container";
-import { List } from "./components/styles/ListOfChat";
-import { Heading } from "./components/styles/Heading";
-import { Logo } from "./components/styles/Logo";
+import styled from "styled-components";
 import Contact from "./components/Contact/Contact";
 import chats from "./datas";
+
+const Container = styled.div`
+max-width: 800px;
+`;
+const Header = styled.header`
+display:flex;
+flex-direction: column;
+align-items: center;
+`;
+const Logo = styled.img`
+width: 80px;
+heigth: 50px;
+`;
+const Heading = styled.h1`
+text-align: center;
+`;
+const List = styled.ul`
+list-style: none;
+`;
+
 
 function App() {
   return (
