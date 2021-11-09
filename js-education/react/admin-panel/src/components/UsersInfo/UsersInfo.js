@@ -4,6 +4,7 @@ import User from "../User/User";
 
 
 function UserInfo(props) {
+  const { id } = props.users
   return (
     <table className={UsersInfoCSS.table}>
       <tr>
@@ -15,7 +16,7 @@ function UserInfo(props) {
         <th className={UsersInfoCSS.th}>Delete</th>
       </tr>
       {props.users.map(user => {
-        return <User user={user} key={user.id} />
+        return <User user={user} key={id} />
       })}
     </table>
   )

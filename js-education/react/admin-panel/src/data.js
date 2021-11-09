@@ -4,35 +4,35 @@ export const users = [
     id: 1,
     userName: 'bobby',
     department: 'Driver',
-    dateOfCreate: 'Tue, 26 Oct 2021 14:55:55 GMT',
-    editDate: 'Tue, 26 Oct 2021 14:56:27 GMT'
+    dateOfCreate: new Date('November 9, 2021 13:24:00'),
+    editDate: new Date('November 9, 2021 13:25:00')
   },
   {
     id: 2,
     userName: 'bobby',
     department: 'Driver',
-    dateOfCreate: 'Tue, 26 Oct 2021 14:56:24 GMT',
-    editDate: '-'
+    dateOfCreate: new Date('November 9, 2021 14:24:00'),
+    editDate: null
   },
   {
     id: 3,
     userName: 'bobby',
     department: 'Driver',
-    dateOfCreate: 'Tue, 26 Oct 2021 14:56:28 GMT',
-    editDate: '-'
+    dateOfCreate: new Date('November 9, 2021 15:35:00'),
+    editDate: null
   },
   {
     id: 4,
     userName: 'bbb',
     department: 'Intern',
-    dateOfCreate: 'Tue, 26 Oct 2021 15:09:13 GMT',
-    editDate: 'Tue, 26 Oct 2021 15:10:29 GMT'
+    dateOfCreate: new Date('November 9, 2021 15:42:00'),
+    editDate: new Date('November 9, 2021 15:44:00')
   },
   {
     id: 5,
     userName: 'bbb',
     department: 'Student',
-    dateOfCreate: 'Tue, 26 Oct 2021 15:10:26 GMT',
-    editDate: '-'
+    dateOfCreate: new Date('November 9, 2021 15:49:00'),
+    editDate: null
   }
 ]
