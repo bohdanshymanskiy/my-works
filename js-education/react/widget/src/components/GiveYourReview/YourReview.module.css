@@ -1,0 +1,27 @@
+.allStars {
+  display: flex;
+  font-size: 40px;
+}
+.asd {
+  max-width: 100px;
+  margin: 0 auto;
+}
+.radio {
+  display: none;
+}
+
+.star {
+  cursor: pointer;
+}
+
+.button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 20px;
+  color: sandybrown;
+  background-color: skyblue;
+  border-radius: 15px;
+  width: 120px;
+  height: 45px;
+}
