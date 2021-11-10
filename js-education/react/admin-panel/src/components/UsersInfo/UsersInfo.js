@@ -3,8 +3,7 @@ import UsersInfoCSS from "./UsersInfo.module.css";
 import User from "../User/User";
 
 
-function UserInfo(props) {
-  const { id } = props.users
+function UserInfo({ users }) {
   return (
     <table className={UsersInfoCSS.table}>
       <tr>
@@ -15,8 +14,8 @@ function UserInfo(props) {
         <th className={UsersInfoCSS.th}>Edit</th>
         <th className={UsersInfoCSS.th}>Delete</th>
       </tr>
-      {props.users.map(user => {
-        return <User user={user} key={id} />
+      {users.map((user, index) => {
+        return <User user={user} key={index} />
       })}
     </table>
   )

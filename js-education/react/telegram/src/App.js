@@ -4,7 +4,7 @@ import Contact from "./components/Contact/Contact";
 import chats from "./datas";
 
 const Container = styled.div`
-max-width: 800px;
+max-width: 500px;
 `;
 const Header = styled.header`
 display:flex;

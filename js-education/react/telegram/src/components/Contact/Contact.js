@@ -6,11 +6,12 @@ padding: 3px;
 display: flex;
 flex-direction: row;
 align-items: center;
-border: 2px solid gray;
+&:hover {
+    background-color: lightgray;
+  }
 `
 const ChatAvatar = styled.div`
-width: 80px;
-heigth: 80px;
+margin: 5px 0px 0px 0px;
 `
 const Avatar = styled.img`
 width: 70px;
@@ -23,26 +24,32 @@ const Online = styled.div`
   height: 10px;
   border-radius: 50%;
   position: relative;
-  bottom: 18px;
-  left: 50px;
+  bottom: 20px;
+  left: 45px;
 `;
 const ChatMessage = styled.div`
 width: 100%;
 display: flex;
-justify-content: space-around;
-align-items: center;
+justify-content: space-between;
+position: relative;
+bottom:10px;
 `
 const MessageInfo = styled.div`
+margin: 0px 20px;
 display:flex
 flex-direction: column;
 `
 const Time = styled.p`
+align-self: start;
+margin: 4px 5px 0px 0px;
 opacity: 0.5;
 `
 const Author = styled.h3`
-text-align: center;
+margin: 0px 0px 0px 0px;
+font-size: 18px;
 `
 const Message = styled.p`
+margin: 7px 0px 0px 0px;
 font-size: 15px;
 `
 
@@ -89,7 +96,7 @@ function Contact(props) {
               {userName}
             </Author>
             <Message>
-              {`${amIAuthor ? 'You' : userName}: ${lastMessage}`}
+              {`${amIAuthor ? 'You:' : ''} ${lastMessage}`}
             </Message>
           </MessageInfo>
           <Time>
