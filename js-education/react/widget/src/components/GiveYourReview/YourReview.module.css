@@ -2,10 +2,6 @@
   display: flex;
   font-size: 40px;
 }
-.asd {
-  max-width: 100px;
-  margin: 0 auto;
-}
 .radio {
   display: none;
 }

@@ -24,7 +24,7 @@ class YourReview extends React.Component {
     const rating = this.state.rating;
     const hover = this.state.hover;
     return (
-      <div className={YourReviewCSS.asd}>
+      <div>
         <div className={YourReviewCSS.allStars}>
           {[1, 2, 3, 4, 5].map((star, i) => {
             return (
