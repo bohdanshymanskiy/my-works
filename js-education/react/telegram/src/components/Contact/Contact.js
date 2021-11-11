@@ -4,6 +4,7 @@ import styled from "styled-components"
 const Chat = styled.div`
 padding: 3px;
 display: flex;
+border: 1px solid lightgray;
 flex-direction: row;
 align-items: center;
 &:hover {
@@ -11,12 +12,16 @@ align-items: center;
   }
 `
 const ChatAvatar = styled.div`
-margin: 5px 0px 0px 0px;
+margin: 5px;
+display: flex;
+align-items: center;
 `
 const Avatar = styled.img`
 width: 70px;
 height: 70px;
-border-radius: 50%
+border-radius: 50%;
+padding: 0;
+margin: 0;
 `
 const Online = styled.div`
   background-color: green;
@@ -24,8 +29,8 @@ const Online = styled.div`
   height: 10px;
   border-radius: 50%;
   position: relative;
-  bottom: 20px;
-  left: 45px;
+  top: 26px;
+  right: 20px;
 `;
 const ChatMessage = styled.div`
 width: 100%;
