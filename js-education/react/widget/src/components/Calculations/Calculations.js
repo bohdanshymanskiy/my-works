@@ -12,7 +12,7 @@ class Calculations extends React.Component {
     return (
       <div className={CalculationsCSS.calc}>
         <p>Total number of reviews {allReviews}.</p>
-        <p>Total number of  good reviews:{niceReviews}, which is {(Average === 'NaN') ? '0' : Average}% from general.</p>
+        <p>Total number of  good reviews:{niceReviews}, which is {isNaN(Average) ? '0' : Average}% from general.</p>
         <p>Number of bad reviews {badReviews}.</p>
         <p>Number of neutral reviews{normReviews}.</p>
       </div>

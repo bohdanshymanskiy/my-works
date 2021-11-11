@@ -1,13 +1,21 @@
 .allStars {
   display: flex;
   font-size: 40px;
+  flex-direction: row-reverse;
+  justify-content: start;
+}
+
+.star {
+  cursor: pointer;
+  color: gray;
 }
 .radio {
   display: none;
 }
 
-.star {
-  cursor: pointer;
+.label:hover .star,
+.label:hover ~ .label .star {
+  color: #ffc107;
 }
 
 .button {
@@ -20,4 +28,8 @@
   border-radius: 15px;
   width: 120px;
   height: 45px;
+}
+
+button:hover {
+  background-color: honeydew;
 }
