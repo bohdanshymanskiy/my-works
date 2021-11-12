@@ -23,7 +23,6 @@ height: 70px;
 border-radius: 50%;
 `
 const Online = styled.div`
-display:inline;
   background-color: green;
   width: 10px;
   height: 10px;
