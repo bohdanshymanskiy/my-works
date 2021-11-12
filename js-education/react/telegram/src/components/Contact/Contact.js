@@ -13,6 +13,7 @@ align-items: center;
 `
 const ChatAvatar = styled.div`
 margin: 5px;
+position: relative;
 display: flex;
 align-items: center;
 `
@@ -20,17 +21,16 @@ const Avatar = styled.img`
 width: 70px;
 height: 70px;
 border-radius: 50%;
-padding: 0;
-margin: 0;
 `
 const Online = styled.div`
+display:inline;
   background-color: green;
   width: 10px;
   height: 10px;
   border-radius: 50%;
-  position: relative;
-  top: 26px;
-  right: 20px;
+  position: absolute;
+  bottom: 4px;
+  right: 10px;
 `;
 const ChatMessage = styled.div`
 width: 100%;
