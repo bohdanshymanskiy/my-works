@@ -5,6 +5,7 @@ const Chat = styled.div`
 padding: 3px;
 display: flex;
 border: 1px solid lightgray;
+margin: -1px 0px 0px 0px;
 flex-direction: row;
 align-items: center;
 &:hover {
