@@ -9,16 +9,14 @@ class YourReview extends React.Component {
       rating: null,
     }
   }
-  newReview() {
-    const { rating } = this.state;
-    this.props.addNewReview(rating);
-    this.setState({
-      rating: null,
-    })
+
+  setRating = (rating) => {
+    this.setState({ rating })
   }
 
   render() {
     const { rating } = this.state;
+    const { addReview } = this.props
     return (
       <div>
         <div className={YourReviewCSS.allStars}>
@@ -27,16 +25,16 @@ class YourReview extends React.Component {
               <label key={i} className={YourReviewCSS.label}>
                 <input type="radio" name="rating"
                   value={star}
-                  onClick={() => this.setState({ rating: star })}
+                  onClick={() => this.setRating(star)}
                   className={YourReviewCSS.radio} />
                 <FaStar className={YourReviewCSS.star}
-                  color={star <= rating ? 'ffc107' : undefined} />
+                  color={star <= rating ? 'ffc107' : null} />
               </label>
             )
           })
           }
         </div >
-        < button className={YourReviewCSS.button} onClick={() => this.newReview()}> Сохранить</button>
+        < button className={YourReviewCSS.button} onClick={() => { addReview(rating); this.setRating(null) }}> Submit</button>
       </div>
     )
   }

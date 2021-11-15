@@ -8,11 +8,11 @@ class Calculations extends React.Component {
     const badReviews = allData.filter(item => item < 3).length
     const normReviews = allData.filter(item => item === 3).length
     const niceReviews = allData.filter(item => item > 3).length
-    const Average = ((niceReviews / allReviews) * 100).toFixed(2);
+    const Average = allReviews !== 0 ? ((niceReviews / allReviews) * 100).toFixed(2) : 0;
     return (
       <div className={CalculationsCSS.calc}>
         <p>Total number of reviews {allReviews}.</p>
-        <p>Total number of  good reviews:{niceReviews}, which is {isNaN(Average) ? '0' : Average}% from general.</p>
+        <p>Total number of  good reviews:{niceReviews}, which is {Average}% from general.</p>
         <p>Number of bad reviews {badReviews}.</p>
         <p>Number of neutral reviews{normReviews}.</p>
       </div>

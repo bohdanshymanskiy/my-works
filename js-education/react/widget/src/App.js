@@ -9,7 +9,7 @@ class App extends React.Component {
     this.state = { reviews: [] };
   }
 
-  addReview(review) {
+  addReview = (review) => {
     const reviews = this.state.reviews.concat(review);
     this.setState({ reviews });
   }
@@ -19,7 +19,7 @@ class App extends React.Component {
     return (
       <div className={AppCSS.container}>
         <h4 className={AppCSS.h4}>Leave your review:</h4>
-        <YourReview addNewReview={(e) => this.addReview(e)} />
+        <YourReview addReview={this.addReview} />
         <Calculations allReview={reviews} />
       </div>
     )

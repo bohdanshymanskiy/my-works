@@ -1,0 +1,14 @@
+.table {
+  margin: 10px;
+  border-collapse: collapse;
+  width: 500px;
+}
+.table th,
+.table td {
+  border: 1px solid black;
+  text-align: center;
+}
+
+.display {
+  display: none;
+}
