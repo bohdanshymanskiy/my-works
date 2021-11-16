@@ -1,3 +1,11 @@
+.box {
+  max-width: 400px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 .allStars {
   display: flex;
   font-size: 40px;
@@ -7,7 +15,7 @@
 
 .star {
   cursor: pointer;
-  color: gray;
+  color: lightgrey;
 }
 .radio {
   display: none;
@@ -19,17 +27,17 @@
 }
 
 .button {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 20px;
-  color: sandybrown;
-  background-color: skyblue;
-  border-radius: 15px;
-  width: 120px;
-  height: 45px;
+  width: 100px;
+  display: inline-block;
+  color: #fff;
+  padding: 5px 0px;
+  border-width: 2px 0;
+  border-style: solid none;
+  border-color: #fdbe33 #000 #d77206;
+  border-radius: 6px;
+  background: linear-gradient(#f3ae0f, #e38916) #e38916;
+  transition: 0.2s;
 }
-
-button:hover {
-  background-color: honeydew;
+.button:hover {
+  background: linear-gradient(#f5ae00, #f59500);
 }

@@ -18,7 +18,7 @@ class YourReview extends React.Component {
     const { rating } = this.state;
     const { addReview } = this.props
     return (
-      <div>
+      <div className={YourReviewCSS.box}>
         <div className={YourReviewCSS.allStars}>
           {[5, 4, 3, 2, 1].map((star, i) => {
             return (
@@ -28,7 +28,7 @@ class YourReview extends React.Component {
                   onClick={() => this.setRating(star)}
                   className={YourReviewCSS.radio} />
                 <FaStar className={YourReviewCSS.star}
-                  color={star <= rating ? 'ffc107' : null} />
+                  color={star <= rating ? 'gold' : null} />
               </label>
             )
           })
