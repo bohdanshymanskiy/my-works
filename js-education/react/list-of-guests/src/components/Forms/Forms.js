@@ -12,6 +12,7 @@ class Forms extends React.Component {
     }
   }
 
+  setValue = (options) => (e) => this.setState({ [options]: e.target.value })
 
   render() {
     const { username, age, gender } = this.state;
@@ -20,21 +21,21 @@ class Forms extends React.Component {
       <div className={FormCSS.box}>
         <div>
           <label>First name:
-            <input type='text' onChange={(e) => this.setState({ username: e.target.value })} value={username} />
+            <input type='text' onChange={this.setValue('username')} value={username === null ? '' : username} />
           </label>
         </div>
         <div>
           <label>Age:
-            <input type='number' onChange={(e) => this.setState({ age: e.target.value })} value={age} />
+            <input type='number' onChange={this.setValue('age')} value={age === null ? '' : age} />
           </label>
         </div>
-        <select name='select' onChange={(e) => this.setState({ gender: e.target.value })} value={gender}>
+        <select name='select' onChange={this.setValue('gender')} value={gender === null ? '' : gender}>
           <option selected disabled value='Your Gender'>Your gender</option>
           <option value='Male'>Male</option>
           <option value='Female'>Female</option>
         </select>
         <div>
-          <button type='button' onClick={() => addGuest(this.state)}>Submit</button>
+          <button type='button' onClick={() => addGuest({ username, age, gender })}>Submit</button>
         </div>
       </div >
     )

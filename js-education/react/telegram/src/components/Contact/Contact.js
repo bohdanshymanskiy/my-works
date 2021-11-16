@@ -1,11 +1,16 @@
 import React from "react";
 import styled from "styled-components"
 
+const ListItem = styled.li`
+border: 1px solid lightgray;
+& + & {
+  border-top: none;
+}
+`
+
 const Chat = styled.div`
 padding: 3px;
 display: flex;
-border: 1px solid lightgray;
-margin: -1px 0px 0px 0px;
 flex-direction: row;
 align-items: center;
 &:hover {
@@ -89,7 +94,7 @@ function Contact(props) {
 
 
   return (
-    <li key={id}>
+    <ListItem key={id}>
       <Chat>
         <ChatAvatar>
           <Avatar src={avatar} alt={status} />
@@ -109,7 +114,7 @@ function Contact(props) {
           </Time>
         </ChatMessage>
       </Chat>
-    </li>
+    </ListItem>
   );
 }
 

@@ -9,9 +9,9 @@ class App extends React.Component {
   }
 
   addGuest = (guest) => {
-    guest.isArrive = false;
-    guest.id = this.state.allGuests.length;
-    const allGuests = this.state.allGuests.concat(guest);
+    let allGuests = this.state.allGuests;
+    const newGuest = { ...guest, isArrive: false, id: allGuests.length }
+    allGuests = allGuests.concat(newGuest)
     this.setState({ allGuests });
   }
 
