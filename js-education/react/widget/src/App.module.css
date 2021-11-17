@@ -1,11 +1,14 @@
 .container {
+  display: flex;
+  flex-direction: column;
   width: 100vw;
   height: 100vh;
   background-color: lightyellow;
 }
 
 .h4 {
-  text-align: center;
+  display: flex;
+  justify-content: center;
+  padding: 20px 0px;
   font-size: 25px;
-  padding: 20px 0px 0px 0px;
 }
