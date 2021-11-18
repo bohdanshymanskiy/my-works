@@ -4,8 +4,8 @@ import SetTableCSS from './SetTable.module.css';
 
 class SetTable extends React.Component {
   render() {
-    let { allGuests, guestIsCome } = this.props
-    allGuests = allGuests.sort((a, b) => (a.isArrive - b.isArrive) || (a.username.localeCompare(b.username)))
+    const { allGuests, guestIsCome } = this.props
+    const sortGuests = allGuests.sort(({ username: aname, isArrive: a }, { username: bname, isArrive: b }) => (a - b) || (aname.localeCompare(bname)))
     return (
       <div className={allGuests.length > 0 ? null : SetTableCSS.display}>
         <table className={SetTableCSS.table}>
@@ -15,7 +15,7 @@ class SetTable extends React.Component {
             <th>Age</th>
             <th>Gender</th>
           </tr>
-          {allGuests.map((guest) =>
+          {sortGuests.map((guest) =>
             <Row guest={guest} guestIsCome={guestIsCome} key={guest.id} />
           )}
 
