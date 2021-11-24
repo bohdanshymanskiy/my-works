@@ -4,14 +4,17 @@ import React from "react";
 class Row extends React.Component {
 
   render() {
-    const { guest: { username, age, gender, isArrive, id }, guestIsCome } = this.props
+    const { user, deleteItem, editItem } = this.props
+    const { id, dateOfCreate, dateOfEdit, username, department } = user;
     return (
       <tr key={id}>
-        <td><input type='checkbox' checked={isArrive} onChange={guestIsCome(id)} /></td>
         <td>{username}</td>
-        <td>{age}</td>
-        <td>{gender}</td>
-      </tr>
+        <td>{department}</td>
+        <td>{dateOfCreate}</td>
+        <td>{dateOfEdit || '-'}</td>
+        <td><button type='button' onClick={editItem(user)}>EDIT</button></td>
+        <td><button type='button' onClick={deleteItem(id)}>Delete</button></td>
+      </tr >
     )
   }
 
