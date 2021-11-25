@@ -1,0 +1,22 @@
+.box {
+  max-width: 600px;
+  margin: 0 auto;
+  height: 200px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.item {
+  width: 200px;
+  height: 20px;
+  font-size: 18px;
+}
+
+.button {
+  width: 120px;
+  height: 29px;
+  font-size: 20px;
+  border-radius: 10px;
+}

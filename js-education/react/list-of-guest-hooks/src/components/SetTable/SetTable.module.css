@@ -1,0 +1,21 @@
+.table {
+  margin: 10px;
+  border-collapse: collapse;
+  width: 500px;
+}
+
+.table th,
+.table td {
+  border: 1px solid black;
+  text-align: center;
+}
+
+.tableBox {
+  max-width: 900px;
+  display: flex;
+  justify-content: center;
+}
+
+.display {
+  display: none;
+}
