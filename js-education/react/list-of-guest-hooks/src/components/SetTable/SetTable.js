@@ -4,7 +4,7 @@ import SetTableCSS from './SetTable.module.css'
 
 
 function SetTable({ guests, guestWhoArrive }) {
-  const sortGuests = guests.slice().sort(({ name: aname, isArrive: a }, { name: bname, isArrive: b }) => (a - b) || (aname.localeCompare(bname)));
+  const sortGuests = guests.slice().sort(({ guestName: aname, isArrive: a }, { guestName: bname, isArrive: b }) => (a - b) || (aname.localeCompare(bname)));
 
   return (
     <div className={guests.length > 0 ? SetTableCSS.tableBox : SetTableCSS.display}>

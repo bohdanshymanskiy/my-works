@@ -1,15 +1,16 @@
-import React, { useState } from 'react';
+import React, { useState, useCallback } from 'react';
 import Forms from './components/Forms/Forms'
 import SetTable from './components/SetTable/SetTable'
 
 function App() {
   let [guests, setGuest] = useState([])
 
-  const addNewGuest = (guest) => {
+  const addNewGuest = useCallback((guest) => {
     const newGuest = { ...guest, isArrive: false, id: Date.now() }
     setGuest([...guests, newGuest])
-  }
-  const guestWhoArrive = (id) => () => {
+  }, [guests])
+
+  const guestWhoArrive = useCallback((id) => {
     setGuest(guests.map(item => {
       if (item.id === id) {
         item.isArrive = !item.isArrive
@@ -17,7 +18,7 @@ function App() {
       return item;
     })
     )
-  }
+  }, [guests])
   return (
     <div>
       <Forms addNewGuest={addNewGuest} />

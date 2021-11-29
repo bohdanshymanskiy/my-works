@@ -1,49 +1,61 @@
-import React, { useRef } from "react";
+import React, { useState } from "react";
 import FormCSS from './Forms.module.css';
 
 function Forms({ addNewGuest }) {
-  const guestName = useRef(null)
-  const guestAge = useRef(null)
-  const guestGender = useRef(null)
+  const [guestName, setName] = useState('')
+  const [guestAge, setAge] = useState('')
+  const [guestGender, setGender] = useState('')
 
-  const updateGuests = (e) => {
-    e.preventDefault()
-    const name = guestName.current.value;
-    const age = guestAge.current.value;
-    const gender = guestGender.current.value;
-    addNewGuest({ name, age, gender })
-    e.target.reset()
+  const setValue = (e) => {
+
+    let { name, value } = e.target;
+    if (name === 'Name') {
+      setName(value)
+    } else if (name === 'Age') {
+      setAge(value)
+    } else if (name === 'Gender') {
+      setGender(value)
+    }
+  }
+
+  const updateGuests = () => {
+    addNewGuest({ guestName, guestAge, guestGender })
+    setName('')
+    setAge('')
+    setGender('')
   }
 
   return (
-    <form onSubmit={updateGuests}>
-      <div className={FormCSS.box}>
-        <div>
-          <label>
-            <input type='text'
-              className={FormCSS.item}
-              ref={guestName}
-              placeholder='First name' />
-          </label>
-        </div>
-        <div>
-          <label>
-            <input type='number'
-              className={FormCSS.item}
-              ref={guestAge}
-              placeholder='Age' />
-          </label>
-        </div>
-        <select className={FormCSS.item} ref={guestGender}>
-          <option selected value='Your Gender'>Your gender</option>
-          <option value='Male'>Male</option>
-          <option value='Female'>Female</option>
-        </select>
-        <div>
-          <button type='submit' className={FormCSS.buton}>Submit</button>
-        </div>
+    <div className={FormCSS.box}>
+      <div>
+        <label>
+          <input type='text'
+            name='Name'
+            value={guestName}
+            className={FormCSS.item}
+            placeholder='First name'
+            onChange={setValue} />
+        </label>
       </div>
-    </form >
+      <div>
+        <label>
+          <input type='number'
+            name='Age'
+            value={guestAge}
+            className={FormCSS.item}
+            placeholder='Age'
+            onChange={setValue} />
+        </label>
+      </div>
+      <select className={FormCSS.item} name='Gender' value={guestGender} onChange={setValue}>
+        <option selected value='Your Gender'>Your gender</option>
+        <option value='Male'>Male</option>
+        <option value='Female'>Female</option>
+      </select>
+      <div>
+        <button type='submit' className={FormCSS.buton} onClick={updateGuests}>Submit</button>
+      </div>
+    </div>
   );
 }
 
