@@ -8,6 +8,7 @@ const setData = (data = []) => {
     localStorage.setItem('allUsers', JSON.stringify(data))
   } catch (e) {
     alert(e.message)
+    return []
   }
 }
 
@@ -16,6 +17,7 @@ const getData = () => {
     return JSON.parse(localStorage.getItem('allUsers')) || []
   } catch (e) {
     alert(e.message)
+    return [];
   }
 }
 
@@ -24,40 +26,16 @@ const data = getData()
 class App extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { allUsers: [], editId: null, username: '', department: '', searchName: '' };
+    this.state = { allUsers: [...data], editId: null, username: '', department: 'Work Department', searchName: '' };
+  }
+  searchValue = (e) => {
+    this.setState({ searchName: e.target.value })
+  }
+  addUsers = (users) => {
+    this.setState({ allUsers: users, editId: null })
+    setData(users)
   }
 
-  componentDidMount() {
-    this.setState({ allUsers: [...data] })
-  }
-
-  setValue = (options) => (e) => this.setState({ [options]: e.target.value })
-
-  addOrEdit = (user) => () => {
-    const { allUsers, editId, username, department } = this.state;
-    const dateAtMoment = new Date().toUTCString();
-    if (username === '' || department === '' || department === 'Work Department') {
-      window.alert('Please fill all forms')
-    } else {
-      if (editId) {
-        allUsers.map(item => {
-          if (item.id === editId) {
-            item.username = username;
-            item.department = department;
-            item.dateOfEdit = dateAtMoment;
-          }
-          return item;
-        })
-        this.setState({ allUsers: allUsers, editId: null, username: '', department: '' });
-        setData(allUsers)
-      } else {
-        const newUser = { id: Date.now(), dateOfCreate: dateAtMoment, dateOfEdit: null, ...user }
-        const updatingData = [...allUsers, newUser];
-        this.setState({ allUsers: updatingData, editId: null, username: '', department: '' });
-        setData(updatingData)
-      }
-    }
-  }
   deleteItem = (id) => () => {
     const { allUsers } = this.state;
     const areYouSure = window.confirm('Are you sure to delete this user info?')
@@ -72,15 +50,15 @@ class App extends React.Component {
   }
 
   render() {
-    const { allUsers, username, department, searchName } = this.state;
-
+    const { allUsers, editId, username, department, searchName } = this.state;
     return (
       <div className={AppCSS.container}>
-        <Forms addOrEdit={this.addOrEdit}
-          setValue={this.setValue}
-          username={username}
-          searchName={searchName}
-          department={department} />
+        <Forms allUsers={allUsers}
+          searchValue={this.searchValue}
+          addUsers={this.addUsers}
+          editId={editId}
+          editUsername={username}
+          editDepartment={department} />
         <SetTable allUsers={allUsers}
           deleteItem={this.deleteItem}
           editItem={this.editItem}
