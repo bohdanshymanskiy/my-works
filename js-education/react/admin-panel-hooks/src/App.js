@@ -1,7 +1,8 @@
-import React, { useState } from "react";
+import React, { useState, useCallback } from "react";
 import Forms from "./components/Forms/Forms";
 import SetTable from "./components/SetTable/SetTable";
 import AppCSS from './App.module.css'
+
 
 const setData = (data = []) => {
   try {
@@ -19,73 +20,54 @@ const getData = () => {
     return [];
   }
 }
-const data = getData()
 
 function App() {
-
-  const [allUsers, setUsers] = useState([...data])
+  const [allUsers, setUsers] = useState(getData())
   const [editId, setEditId] = useState(null)
-  const [username, setName] = useState('')
-  const [department, setDepartment] = useState('Work Department')
-  const [searchName, setSearchName] = useState('')
 
-
-  const addOrEdit = (user) => () => {
+  const addUsers = (users) => {
+    const { username, department } = users;
     const dateAtMoment = new Date().toUTCString();
-    if (username === '' || department === 'Work Department') {
-      window.alert('Please fill all forms')
+    let editData;
+    if (editId) {
+      editData = allUsers.slice().map(item => {
+        if (item.id === editId) {
+          item.username = username;
+          item.department = department;
+          item.dateOfEdit = dateAtMoment;
+        }
+        return item;
+      })
     } else {
-      if (editId) {
-        const editData = allUsers.slice().map(item => {
-          if (item.id === editId) {
-            item.username = username;
-            item.department = department;
-            item.dateOfEdit = dateAtMoment;
-          }
-          return item;
-        })
-        setUsers(editData)
-        setEditId(null)
-        setName('')
-        setDepartment('Work Department')
-        setData(allUsers)
-      } else {
-        const newUser = { id: Date.now(), dateOfCreate: dateAtMoment, dateOfEdit: null, ...user }
-        const updatingData = [...allUsers, newUser];
-        setUsers(updatingData)
-        setEditId(null)
-        setName('')
-        setDepartment('Work Department')
-        setData(updatingData)
-      };
+      const newUser = { id: Date.now(), dateOfCreate: dateAtMoment, dateOfEdit: null, ...users }
+      editData = [...allUsers, newUser];
     }
+    setUsers(editData)
+    setEditId(null)
+    setData(editData)
   }
 
-  const deleteItem = (id) => () => {
+  const deleteItem = useCallback((id) => {
     const areYouSure = window.confirm('Are you sure to delete this user info?')
     if (areYouSure) {
       const updateData = allUsers.filter(user => user.id !== id)
       setUsers(updateData);
       setData(updateData)
     }
-  }
-  const editItem = ({ id, username, department }) => () => {
-    setEditId(id)
-    setName(username)
-    setDepartment(department)
-  }
+  }, [allUsers])
 
+  const editItem = useCallback((id) => {
+    setEditId(id)
+  }, [editId])
 
   return (
     <div className={AppCSS.container}>
-      <Forms addOrEdit={addOrEdit}
-        username={username}
-        searchName={searchName}
-        department={department} />
+      <Forms allUsers={allUsers}
+        addUsers={addUsers}
+        editId={editId} />
       <SetTable allUsers={allUsers}
         deleteItem={deleteItem}
-        editItem={editItem}
-        searchName={searchName} />
+        editItem={editItem} />
     </div>
   );
 }

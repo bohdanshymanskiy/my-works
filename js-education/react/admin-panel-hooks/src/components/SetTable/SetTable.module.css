@@ -23,3 +23,15 @@ td {
   text-align: center;
   font-size: 25px;
 }
+
+.search {
+  display: flex;
+  justify-content: center;
+}
+
+.label {
+  margin: 10px 0px;
+  width: 250px;
+  height: 25px;
+  font-size: 20px;
+}
