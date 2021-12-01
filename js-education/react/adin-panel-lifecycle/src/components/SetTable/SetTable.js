@@ -3,13 +3,31 @@ import SetTableCSS from './SetTable.module.css';
 import Row from '../Row/Row'
 
 class SetTable extends React.Component {
-  render() {
-    const { allUsers, deleteItem, editItem, searchName } = this.props;
-    const filterUsers = allUsers.filter(item => item.username.startsWith(searchName))
+  constructor(props) {
+    super(props);
+    this.state = { searchName: null };
+  }
 
+  searchValue = (e) => {
+    this.setState({ searchName: e.target.value })
+  }
+  render() {
+    const { allUsers, deleteItem, editItem } = this.props;
+    const { searchName } = this.state;
+    const filterUsers = searchName ? allUsers.filter(item => item.username.startsWith(searchName)) : allUsers
     return (
       <div>
-        <div className={(allUsers.length > 0 && filterUsers.length > 0) ? null : SetTableCSS.display}>
+        <div className={SetTableCSS.search}>
+          <label >
+            <input type='text'
+              className={SetTableCSS.label}
+              name='search'
+              placeholder='Search'
+              onChange={this.searchValue}
+              value={searchName} />
+          </label>
+        </div>
+        <div className={(filterUsers.length > 0) ? null : SetTableCSS.display}>
           <table className={SetTableCSS.table}>
             <tr>
               <th>Username</th>
@@ -19,13 +37,9 @@ class SetTable extends React.Component {
               <th>Edit</th>
               <th>Delete</th>
             </tr>
-            {searchName.length > 0 ?
-              filterUsers.map((user) =>
-                <Row user={user} key={user.id} deleteItem={deleteItem} editItem={editItem} searchName={searchName} />
-              )
-              : allUsers.map((user) =>
-                <Row user={user} key={user.id} deleteItem={deleteItem} editItem={editItem} searchName={searchName} />
-              )}
+            {filterUsers.map((user) =>
+              <Row user={user} key={user.id} deleteItem={deleteItem} editItem={editItem} searchName={searchName} />
+            )}
           </table>
         </div >
         <div>

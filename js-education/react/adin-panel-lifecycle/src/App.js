@@ -21,22 +21,34 @@ const getData = () => {
   }
 }
 
-const data = getData()
-
 class App extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { allUsers: [...data], editId: null, username: '', department: 'Work Department', searchName: '' };
-  }
-  searchValue = (e) => {
-    this.setState({ searchName: e.target.value })
+    this.state = { allUsers: getData(), editId: null };
   }
   addUsers = (users) => {
-    this.setState({ allUsers: users, editId: null })
-    setData(users)
+    const { allUsers, editId } = this.state;
+    const { username, department } = users;
+    const dateAtMoment = new Date().toUTCString();
+    let editData;
+    if (editId) {
+      editData = allUsers.slice().map(item => {
+        if (item.id === editId) {
+          item.username = username;
+          item.department = department;
+          item.dateOfEdit = dateAtMoment;
+        }
+        return item;
+      })
+    } else {
+      const newUser = { id: Date.now(), dateOfCreate: dateAtMoment, dateOfEdit: null, ...users }
+      editData = [...allUsers, newUser];
+    }
+    this.setState({ allUsers: editData, editId: null })
+    setData(editData)
   }
 
-  deleteItem = (id) => () => {
+  deleteItem = (id) => {
     const { allUsers } = this.state;
     const areYouSure = window.confirm('Are you sure to delete this user info?')
     if (areYouSure) {
@@ -45,27 +57,25 @@ class App extends React.Component {
       setData(updateData)
     }
   }
-  editItem = ({ id, username, department }) => () => {
-    this.setState({ editId: id, username, department })
+
+  editItem = ({ id }) => {
+    this.setState({ editId: id })
   }
 
   render() {
-    const { allUsers, editId, username, department, searchName } = this.state;
+    const { allUsers, editId } = this.state;
     return (
       <div className={AppCSS.container}>
         <Forms allUsers={allUsers}
-          searchValue={this.searchValue}
           addUsers={this.addUsers}
-          editId={editId}
-          editUsername={username}
-          editDepartment={department} />
+          editId={editId} />
         <SetTable allUsers={allUsers}
           deleteItem={this.deleteItem}
-          editItem={this.editItem}
-          searchName={searchName} />
+          editItem={this.editItem} />
       </div>
     );
   }
 }
 
 export default App;
+
