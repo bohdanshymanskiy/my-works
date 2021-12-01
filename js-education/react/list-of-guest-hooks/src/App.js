@@ -4,6 +4,8 @@ import SetTable from './components/SetTable/SetTable'
 
 function App() {
   let [guests, setGuest] = useState([])
+  console.log(guests);
+
 
   const addNewGuest = useCallback((guest) => {
     const newGuest = { ...guest, isArrive: false, id: Date.now() }
