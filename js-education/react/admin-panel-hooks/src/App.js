@@ -22,19 +22,21 @@ const getData = () => {
 }
 
 function App() {
-  const [allUsers, setUsers] = useState(getData())
+  const [allUsers, setUsers] = useState(() => getData())
   const [editId, setEditId] = useState(null)
+  const [editName, setEditName] = useState(null)
+  const [editDepartment, setEditDepartment] = useState(null)
+  console.log(editName);
+
 
   const addUsers = (users) => {
     const { username, department } = users;
     const dateAtMoment = new Date().toUTCString();
     let editData;
     if (editId) {
-      editData = allUsers.slice().map(item => {
+      editData = allUsers.map(item => {
         if (item.id === editId) {
-          item.username = username;
-          item.department = department;
-          item.dateOfEdit = dateAtMoment;
+          return { ...item, username, department, dateOfEdit: dateAtMoment }
         }
         return item;
       })
@@ -44,6 +46,8 @@ function App() {
     }
     setUsers(editData)
     setEditId(null)
+    setEditDepartment(null)
+    setEditName(null)
     setData(editData)
   }
 
@@ -56,15 +60,18 @@ function App() {
     }
   }, [allUsers])
 
-  const editItem = useCallback((id) => {
+  const editItem = useCallback(({ id, username, department }) => {
     setEditId(id)
+    setEditName(username)
+    setEditDepartment(department)
   }, [editId])
 
   return (
     <div className={AppCSS.container}>
-      <Forms allUsers={allUsers}
-        addUsers={addUsers}
-        editId={editId} />
+      <Forms addUsers={addUsers}
+        editDepartment={editDepartment}
+        editName={editName}
+      />
       <SetTable allUsers={allUsers}
         deleteItem={deleteItem}
         editItem={editItem} />

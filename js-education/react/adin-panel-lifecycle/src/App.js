@@ -34,7 +34,7 @@ class App extends React.Component {
     if (editId) {
       editData = allUsers.slice().map(item => {
         if (item.id === editId) {
-          return Object.assign({}, item, { username, department, dateOfEdit: dateAtMoment });
+          return { ...item, username, department, dateOfEdit: dateAtMoment };
         }
         return item;
       })

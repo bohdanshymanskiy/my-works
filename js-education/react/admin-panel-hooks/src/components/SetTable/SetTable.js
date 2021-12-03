@@ -2,8 +2,9 @@ import React, { useState } from "react";
 import SetTableCSS from './SetTable.module.css';
 import Row from '../Row/Row'
 
+const inputSearch = 'search';
+
 function SetTable({ allUsers, deleteItem, editItem }) {
-  const inputSearch = 'search';
   const [searchName, setSearchName] = useState(null)
   const filterUsers = searchName ? allUsers.filter(item => item.username.startsWith(searchName)) : allUsers
 

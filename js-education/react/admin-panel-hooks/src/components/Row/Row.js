@@ -9,7 +9,7 @@ function Row({ user, deleteItem, editItem, searchName }) {
       <td>{department}</td>
       <td>{dateOfCreate}</td>
       <td>{dateOfEdit || '-'}</td>
-      <td><button type='button' onClick={() => editItem(id)}>EDIT</button></td>
+      <td><button type='button' onClick={() => editItem(user)}>EDIT</button></td>
       <td><button type='button' onClick={() => deleteItem(id)}>Delete</button></td>
     </tr >
   )

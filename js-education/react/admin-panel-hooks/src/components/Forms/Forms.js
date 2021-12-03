@@ -1,20 +1,17 @@
 import React, { useEffect, useState } from "react";
 import FormCSS from './Forms.module.css'
 
+const nameUser = 'username';
+const departmentUser = 'department';
 
-function Forms({ allUsers, addUsers, editId }) {
-  const nameUser = 'username';
-  const departmentUser = 'department';
+function Forms({ addUsers, editName, editDepartment }) {
   const [username, setName] = useState(null)
-  const [department, setDepartment] = useState('Work Department')
+  const [department, setDepartment] = useState(null)
 
   useEffect(() => {
-    if (editId) {
-      const [{ username, department }] = allUsers.filter(item => item.id === editId)
-      setName(username)
-      setDepartment(department)
-    }
-  }, [editId])
+    setName(editName)
+    setDepartment(editDepartment)
+  }, [editName, editDepartment])
 
   const setValue = (e) => {
     let { name, value } = e.target;
@@ -33,7 +30,7 @@ function Forms({ allUsers, addUsers, editId }) {
       addUsers(user)
     }
     setName(null)
-    setDepartment('Work Department')
+    setDepartment(null)
   }
 
   return (
