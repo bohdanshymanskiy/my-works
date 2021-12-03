@@ -24,7 +24,7 @@ const getData = () => {
 class App extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { allUsers: getData(), editId: null };
+    this.state = { allUsers: getData(), editId: null, username: null, department: null };
   }
   addUsers = (users) => {
     const { allUsers, editId } = this.state;
@@ -34,9 +34,7 @@ class App extends React.Component {
     if (editId) {
       editData = allUsers.slice().map(item => {
         if (item.id === editId) {
-          item.username = username;
-          item.department = department;
-          item.dateOfEdit = dateAtMoment;
+          return Object.assign({}, item, { username, department, dateOfEdit: dateAtMoment });
         }
         return item;
       })
@@ -44,7 +42,7 @@ class App extends React.Component {
       const newUser = { id: Date.now(), dateOfCreate: dateAtMoment, dateOfEdit: null, ...users }
       editData = [...allUsers, newUser];
     }
-    this.setState({ allUsers: editData, editId: null })
+    this.setState({ allUsers: editData, editId: null, username: null, department: null })
     setData(editData)
   }
 
@@ -58,17 +56,17 @@ class App extends React.Component {
     }
   }
 
-  editItem = ({ id }) => {
-    this.setState({ editId: id })
+  editItem = ({ id, username, department }) => {
+    this.setState({ editId: id, username, department })
   }
 
   render() {
-    const { allUsers, editId } = this.state;
+    const { allUsers, username, department } = this.state;
     return (
       <div className={AppCSS.container}>
-        <Forms allUsers={allUsers}
-          addUsers={this.addUsers}
-          editId={editId} />
+        <Forms username={username}
+          department={department}
+          addUsers={this.addUsers} />
         <SetTable allUsers={allUsers}
           deleteItem={this.deleteItem}
           editItem={this.editItem} />
