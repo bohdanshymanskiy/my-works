@@ -1,0 +1,19 @@
+.box_button {
+  display: flex;
+  justify-content: center;
+  align-self: center;
+}
+
+button {
+  color: #fff;
+  background-color: #333;
+  width: 150px;
+  height: 33px;
+  font-size: 18px;
+  border-radius: 13px;
+}
+
+button:hover {
+  background-color: lightslategray;
+  color: whitesmoke;
+}
