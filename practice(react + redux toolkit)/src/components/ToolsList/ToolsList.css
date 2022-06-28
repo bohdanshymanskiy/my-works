@@ -1,0 +1,16 @@
+.tools {
+    padding: 0 50px;
+}
+
+h3 {
+    font-size: 25px;
+    display: flex;
+    justify-content: center;
+}
+
+.tools-container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}

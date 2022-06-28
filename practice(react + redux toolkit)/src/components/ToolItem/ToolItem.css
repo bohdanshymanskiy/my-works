@@ -1,0 +1,21 @@
+.tool-container {
+    width: 215px;
+    height: 215px;
+    margin-top: 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    border: 1px solid #EEEEEE;
+    border-radius: 20px;
+}
+
+.active {
+    background-color: #8878F9;
+    color: #fff;
+}
+
+.tool-title {
+    padding: 0 20px;
+    font-weight: 500;
+    font-size: 24px;
+}

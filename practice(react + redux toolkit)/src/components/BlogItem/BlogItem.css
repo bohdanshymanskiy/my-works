@@ -1,0 +1,33 @@
+.blog-container {
+    width: 380px;
+    height: 440px;
+    margin-top: 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    border: 1px solid #EEEEEE;
+    border-radius: 20px;
+    padding-bottom: 10px;
+}
+
+.blog-info {
+    display: flex;
+    padding: 0 20px;
+    justify-content: space-between;
+}
+.blog-title {
+    padding: 0 10px;
+}
+
+.blog-id {
+    font-size: 18px;
+    padding: 0 5px;
+    background-color: gray;
+    border-radius: 10px;
+    display: inline-block;
+}
+
+.title {
+    font-size: 25px;
+    font-weight: bold;
+}

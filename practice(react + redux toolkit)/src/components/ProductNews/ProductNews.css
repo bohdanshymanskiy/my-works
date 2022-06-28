@@ -1,0 +1,42 @@
+.product-news {
+    height: 450px;
+    background: linear-gradient(to right, #6A56F5 , #8150EE);
+}
+
+.products-news-container {
+    height: 100%;
+    background: url('../../assets/img/3rect.png') 100% 100% no-repeat, url('../../assets/img/hand.png') 5% 100% no-repeat, url('../../assets/img/upper.png') no-repeat;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.products-news-title {
+    width: 40%;
+    text-align: center;
+    color: #fff;
+    font-size: 55px;
+}
+
+
+
+.products-news-search input {
+    padding-left: 15px;
+    width: 530px;
+    height: 62px;
+    border: none;
+    font-size: 18px;
+    border-top-left-radius: 15px;
+    border-bottom-left-radius: 15px;
+}
+.button-search {
+    width: 100px;
+    height: 65px;
+    font-size: 17px;
+    color: #7451ED;
+    border: none;
+    border-top-right-radius: 15px;
+    border-bottom-right-radius: 15px;
+    background: linear-gradient(to right, #FEE740, #FED12D);
+}
