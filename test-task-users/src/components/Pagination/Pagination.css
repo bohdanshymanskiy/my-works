@@ -1,0 +1,13 @@
+.page {
+  margin: 0 10px;
+  width: 40px;
+  height: 40px;
+  font-size: 30px;
+  border-radius: 15px;
+  border: none;
+}
+
+
+.active-page {
+  background-color: #ee9
+}

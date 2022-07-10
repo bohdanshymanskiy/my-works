@@ -1,0 +1,46 @@
+.user-container {
+    padding: 16px;
+    margin: 10px;
+    height: 180px;
+    background-color: #fff;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    border-radius: 3px;
+    box-shadow: 0 0 1px 0 rgba(9, 30, 66, 0.31), 0 1px 1px 0 rgba(9, 30, 66, 0.25);
+}
+
+.active {
+    box-shadow: 0 0 3px 0 ;
+    border: solid 2px #0065ff;
+    background-color: #eff5ff;
+}
+
+.user-container:hover {
+    background-color:#efe9;
+}
+.buttons .button:first-child {
+    margin-right: 10px;
+}
+
+.button {
+    width: 100px;
+    height: 30px;
+    border-radius: 14px;
+    border: none;
+}
+.edit {
+    background-color: #ee9;
+}
+
+.edit:hover {
+    background-color: #ee1;
+}
+
+.delete {
+    background-color: #ff8164;
+}
+
+.delete:hover {
+ background-color: #ff5555;
+}
